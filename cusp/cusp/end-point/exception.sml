@@ -1,0 +1,2 @@
+exception RaceCondition
+exception AddressInUse

@@ -1,0 +1,80 @@
+local
+   $(SML_LIB)/basis/basis.mlb
+   $(SML_LIB)/basis/mlton.mlb  (* used for rol in lookup3.sml *)
+   $(SML_LIB)/basis/unsafe.mlb (* used by mlton-pack.sml *)
+in
+   ann
+      "warnUnused true"
+      "forceUsed"
+      "nonexhaustiveMatch warn"
+      "redundantMatch warn"
+      "sequenceNonUnit warn"
+   in
+      basic/order.sig
+      basic/order.fun
+      basic/once.sig
+      basic/once.sml
+      basic/iterator.sig
+      basic/iterator.sml
+      basic/weak.sig
+      basic/weak.sml
+      basic/word-to-string.sml
+
+      basic/make-vector.sig
+      (* basic/make-vector.sml *)
+      ann
+         "allowPrim true"
+      in
+         basic/make-vector-mlton.sml
+      end
+
+      fold/fold.sig
+      fold/fold.sml
+      fold/functional-record-update.sml
+
+      local
+         serial/pack.sig
+         (* serial/pack.sml *)
+         serial/pack-mlton.sml
+         serial/basic-types.sml
+      in
+         serial/tuple.sml
+         serial/serial.sig
+         serial/serial.sml
+      end
+
+      random/random.sig
+      random/random.fun
+      random/mersenne-twister.sml
+      random/random.sml
+
+      container/id-bucket.sig
+      container/id-bucket.sml
+      container/stack.sig
+      container/stack.sml
+      container/queue.sig
+      container/queue.sml
+      container/tree.sig
+      container/tree.fun
+      container/ring.sig
+      container/ring.sml
+
+      heap/heap.sml
+      heap/heap.sig
+      heap/heap.fun
+      heap/managed-heap.sig
+      heap/managed-heap.fun
+      heap/in-place-heap.sig
+      heap/in-place-heap.fun
+
+      hash/hash.sig
+      hash/hash.sml
+      hash/hash-algorithm.sig
+      hash/hash-algorithm.fun
+      hash/lookup3.sml
+      hash/hash-table.sig
+      hash/hash-table.fun
+
+      serial/serializable.sig
+   end
+end

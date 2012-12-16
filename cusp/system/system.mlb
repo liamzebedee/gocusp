@@ -1,0 +1,42 @@
+local
+   $(SML_LIB)/basis/basis.mlb
+   $(SML_LIB)/basis/mlton.mlb
+in
+   ../util/util.mlb
+
+   ann
+      "warnUnused true"
+      "forceUsed"
+      "nonexhaustiveMatch warn"
+      "redundantMatch warn"
+      "sequenceNonUnit warn"
+   in
+      entropy.sig
+      sigpoll.sig
+      copy.sig
+
+      entropy.sml
+      (* sigpoll.sml *)
+      (* copy.sml *)
+
+      ann
+         "allowFFI true"
+      in
+         entropy-mlton.sml
+         sigpoll-mlton.sml
+         copy-mlton.sml
+      end
+
+      time.sig
+      time.sml
+      event.sig
+      event.fun
+      main.sig
+      main.sml
+      signal.sig
+      signal.sml
+      address.sig
+      udp.sig
+      udp4.sml
+   end
+end

@@ -1,0 +1,62 @@
+local
+   $(SML_LIB)/basis/basis.mlb
+   ../crypto/crypto.mlb
+   ../system/system.mlb
+in
+   ann
+      "warnUnused true"
+      "forceUsed"
+      "nonexhaustiveMatch warn"
+      "redundantMatch warn"
+      "sequenceNonUnit warn"
+   in
+      local
+         (* The public API *)
+         suite.sig
+         crypto.sig
+         host.sig
+         end-point.sig
+         in-stream.sig
+         out-stream.sig
+         cusp.sig
+
+         (* Implementation *)
+         end-point/exception.sml
+         end-point/counter.sml
+
+         crypto/suites.sml
+         crypto/crypto-extra.sig
+         crypto/privatekey.sml
+         crypto/symmetric.sml
+         crypto/publickey.sml
+
+         stream/packet-format.sml
+         stream/in-stream-queue.sig
+         stream/in-stream-queue.sml
+         stream/out-stream-queue.sig
+         stream/out-stream-queue.sml
+         stream/host-dispatch.sig
+         stream/host-dispatch.fun
+
+         channel/ack-callbacks.sig
+         channel/ack-generator.sig
+         channel/congestion-control.sig
+         channel/negotiation.sig
+
+         channel/packet-format.sml
+         channel/negotiation.fun
+         channel/delayed-ack.fun
+         channel/fast-retransmit.fun
+         channel/reno.fun
+         channel/channel-stack.fun
+
+         end-point/host-table.fun
+         end-point/channel-dispatch.fun
+         end-point/end-point.fun
+         end-point/cusp.fun
+      in
+         signature CUSP
+         functor CUSP
+      end
+   end
+end

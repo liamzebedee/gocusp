@@ -1,0 +1,7 @@
+local
+   $(SML_LIB)/basis/basis.mlb
+   ../../system/system.mlb
+   ../cusp.mlb
+in
+   sendzeros.sml
+end

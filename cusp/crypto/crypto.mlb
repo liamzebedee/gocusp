@@ -1,0 +1,54 @@
+local
+   $(SML_LIB)/basis/basis.mlb
+   $(SML_LIB)/basis/mlton.mlb  (* rol needed in ripemd-160 *)
+   $(SML_LIB)/basis/unsafe.mlb (* used by field25519ffi.sml *)
+in
+   ../util/util.mlb
+
+   ann
+      "warnUnused true"
+      "forceUsed"
+      "nonexhaustiveMatch warn"
+      "redundantMatch warn"
+      "sequenceNonUnit warn"
+   in
+      cipher.sig
+      mac.sig
+      cyclic-group.sig
+      compressor.sig
+      hmqv.sig
+      stream.sig
+
+      (* Portable SML implementations of crypto primitives *)
+      aes128ml.sml
+      poly1305ml.sml
+      curve25519.fun
+      field25519ml.sml
+      ripemd-160.sml
+      whirlpool.sml
+      hmqv.fun
+      counter.fun
+
+      (* Use FFI to access assembler implementations *)
+      ann
+         "allowFFI true"
+      in
+         key.fun
+         aes128ffi.sml
+         poly1305ffi.sml
+         field25519ffi-$(TARGET_ARCH).sml
+      end
+   end
+
+   (* Use the faster FFI versions by default *)
+   structure AES128 = AES128FFI
+   structure Poly1305 = Poly1305FFI
+   structure Curve25519 = Curve25519FFI
+
+(*
+   (* Alternative: portable SML versions *)
+   structure AES128 = AES128ML
+   structure Poly1305 = Poly1305ML
+   structure Curve25519 = Curve25519ML
+*)
+end

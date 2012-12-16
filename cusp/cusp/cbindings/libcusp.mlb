@@ -1,0 +1,17 @@
+local
+   $(SML_LIB)/basis/basis.mlb
+   $(SML_LIB)/basis/mlton.mlb
+   ../../system/system.mlb
+   ../cusp.mlb
+in
+   ann
+      "warnUnused true"
+      "nonexhaustiveMatch warn"
+      "redundantMatch warn"
+      "sequenceNonUnit warn"
+      "allowFFI true"
+   in
+      realnetwork.sml
+      libcusp.sml
+   end
+end
