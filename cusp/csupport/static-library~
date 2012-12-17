@@ -1,7 +1,0 @@
-#! /bin/sh
-
-dir=`dirname "$0"`
-cpu=`grep "^$1 " "$MLTON_LIB_DIR/target-map" | (read target cpu os; echo "$cpu")`
-lib="$dir/$2/libbs-asm-$cpu.a"
-
-exec "$MLTON_LIB_DIR/static-library" "$@" "$lib"
