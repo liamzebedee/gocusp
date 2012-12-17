@@ -8,6 +8,8 @@ all: preroutine generatebindings compile
 clean:
 	rm *.c
 	rm *.cxx
+	rm *.o
+	rm *.so
 
 preroutine:
 	@echo "Compiling libcusp..."
