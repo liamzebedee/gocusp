@@ -3,7 +3,6 @@
 make=make
 swig=swig
 
-# eval $(go env); export GOROOT GOOS GOARCH; make -f BuildCUSP.make
 all: preroutine generatebindings compile
 
 clean:
@@ -29,4 +28,4 @@ compile:
 	go tool pack grc cusp.a ../libcusp/cusp/cbindings/libcusp.so cusp.so cusp.6 cusp_gc.6; \
 	rm cusp.6 cusp_gc.6 cusp.so; 
 	@echo "Installing..."
-	sudo cp -f gocusp/cusp.a ${GOROOT}/pkg/${GOOS}_${GOARCH}/net
+	sudo cp -f gocusp/cusp.a ${GOROOT}/pkg/${GOOS}_${GOARCH}/github.com/liamzebedee/
