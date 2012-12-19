@@ -40,8 +40,10 @@
  *
  */
 
-#include <inttypes.h>
-#include <string>
+#ifndef SWIG
+  #include <inttypes.h>
+  #include <string>
+#endif
 
 namespace CUSP {
 
