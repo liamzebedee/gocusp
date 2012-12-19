@@ -1,4 +1,4 @@
-%module cusp
+%module gocusp
 %{
   #include "../libcusp/cusp/cbindings/include/cusp.h"
 %}

@@ -6,14 +6,12 @@ GoCUSP relies on a Makefile build system, so the installation is different from 
 
 ```
 go get -u -d github.com/liamzebedee/gocusp
-eval $(go env)
-cd ${GOROOT}/src/pkg/github.com/liamzebedee/gocusp
-export GOROOT GOOS GOARCH; make
+eval $(go env); cd ${GOROOT}/src/pkg/github.com/liamzebedee/gocusp; make GOROOT=${GOROOT} GOOS=${GOOS} GOARCH=${GOARCH}
 ```
 
 ## Usage
 ```
-import "github.com/liamzebedee/gocusp/cusp"
+import "github.com/liamzebedee/gocusp/gocusp"
 ```
 
 ## Licensing

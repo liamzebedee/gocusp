@@ -1,5 +1,4 @@
-# TODO Cross platform integration https://github.com/davecheney/golang-crosscompile 
-
+# TODO Cross platform integration https://github.com/davecheney/golang-crosscompile
 make=make
 swig=swig
 
@@ -7,6 +6,7 @@ all: preroutine generatebindings compile
 
 clean:
 	cd libcusp/cusp/cbindings; $(make) clean;
+	cd gocusp; sudo rm gocusp_gc.c gocusp.go gocusp.a cusp_wrap.cxx;
 
 preroutine:
 	@echo "Compiling libcusp..."
@@ -21,11 +21,12 @@ compile:
 	@echo "Compiling bindings..."
 	cd gocusp; \
 	gcc -x c++ -c -fPIC cusp_wrap.cxx; \
-	gcc -shared cusp_wrap.o -o cusp.so; \
+	gcc -shared cusp_wrap.o -o cusp_wrap.so; \
 	rm cusp_wrap.o; \
-	go tool 6g cusp.go; \
-	go tool 6c -I ${GOROOT}/pkg/${GOOS}_${GOARCH} -D_64BIT cusp_gc.c; \
-	go tool pack grc cusp.a ../libcusp/cusp/cbindings/libcusp.so cusp.so cusp.6 cusp_gc.6; \
-	rm cusp.6 cusp_gc.6 cusp.so; 
+	go tool 6g gocusp.go; \
+	go tool 6c -I ${GOROOT}/pkg/${GOOS}_${GOARCH} -D_64BIT gocusp_gc.c; \
+	go tool pack grc gocusp.a ../libcusp/cusp/cbindings/libcusp.so cusp_wrap.so gocusp.6 gocusp_gc.6; \
+	rm gocusp.6 gocusp_gc.6 cusp_wrap.so; 
 	@echo "Installing..."
-	sudo cp -f gocusp/cusp.a ${GOROOT}/pkg/${GOOS}_${GOARCH}/github.com/liamzebedee/
+	sudo mkdir -p ${GOROOT}/pkg/${GOOS}_${GOARCH}/github.com/liamzebedee/gocusp/
+	sudo cp -f gocusp/gocusp.a ${GOROOT}/pkg/${GOOS}_${GOARCH}/github.com/liamzebedee/gocusp/gocusp.a
