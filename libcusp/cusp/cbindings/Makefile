@@ -3,7 +3,7 @@ MLTON=mlton
 all:	libcusp.a
 
 clean:
-	rm -f libcusp.a include/libcusp.h .*.d
+	rm -f libcusp.a libcusp.so include/libcusp.h .*.d
 	rm -rf html latex
 
 %.a:	%.mlb .%.d
