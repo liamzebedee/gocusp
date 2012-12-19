@@ -10,7 +10,7 @@ clean:
 
 preroutine:
 	@echo "Compiling libcusp..."
-#cd libcusp/cusp/cbindings; $(make)
+	cd libcusp/cusp/cbindings; $(make)
 	
 generatebindings:
 	@echo "Generating bindings..."
