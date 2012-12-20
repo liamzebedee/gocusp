@@ -11,8 +11,11 @@ eval $(go env); cd ${GOROOT}/src/pkg/github.com/liamzebedee/gocusp; make GOROOT=
 
 ## Usage
 ```
-import "github.com/liamzebedee/gocusp/gocusp"
+import "github.com/liamzebedee/gocusp/cusp"
 ```
 
 ## Licensing
 GoCUSP is licensed under GPLv3 to Liam (liamzebedee) Edwards-Playne. 
+
+## Notes
+```cusp``` contains the GoCUSP wrapper, ```libcusp``` contains the original CUSP library.
