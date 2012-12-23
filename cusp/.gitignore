@@ -1,0 +1,7 @@
+# SWIG-generated files
+cusp.go
+cusp_gc.c
+cusp_wrap.cxx
+
+# Build
+cusp.a
