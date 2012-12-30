@@ -1,9 +1,11 @@
-#include "cusp.h"
+#ifndef SWIG
+  #include "cusp.h"
 
-#include <assert.h>
-#include <string.h>
-#include <algorithm>
-#include "libcusp.h"
+  #include <cassert>
+  #include <string>
+  #include <algorithm>
+  #include "libcusp.h"
+#endif
 
 #ifdef NDEBUG
 #define ASSERT_CALL_TRUE(x) x

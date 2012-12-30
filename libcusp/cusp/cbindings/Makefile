@@ -8,7 +8,7 @@ clean:
 
 %.a:	%.mlb .%.d
 	@echo "Building library: $<"
-	$(MLTON) -export-header include/$*.h -format library $<
+	$(MLTON) -export-header include/$*.h -format libarchive $<
 
 .%.d:	%.mlb
 	@echo "Building makefile for library:  $<"
