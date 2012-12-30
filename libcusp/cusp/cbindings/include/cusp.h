@@ -41,8 +41,8 @@
  */
 
 #ifndef SWIG
-  #include <inttypes.h>
-  #include <string>
+	#include <inttypes.h>
+	#include <string>
 #endif
 
 namespace CUSP {

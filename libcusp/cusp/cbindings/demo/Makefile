@@ -4,7 +4,7 @@ COMPILER = g++
 
 CXXFLAGS += -I../include -L..
 
-ARCH = $(shell uname -m)
+ARCH = $(uname -m)
 
 TARGETS = client server
 

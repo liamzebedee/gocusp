@@ -1,11 +1,9 @@
-#ifndef SWIG
-  #include "cusp.h"
+#include "cusp.h"
 
-  #include <cassert>
-  #include <string>
-  #include <algorithm>
-  #include "libcusp.h"
-#endif
+#include <assert.h>
+#include <string.h>
+#include <algorithm>
+#include "libcusp.h"
 
 #ifdef NDEBUG
 #define ASSERT_CALL_TRUE(x) x
@@ -736,6 +734,7 @@ void InStream::readCallback(int32_t count, int32_t ofs, void* data,
 // 		fwrite(data, count, 1, stdout);
 // 		fprintf(stdout, "\n");
 		memcpy(buf, ((char*) data) + ofs, (size_t) count);
+		
 		((ReadHandler*) userData)->onReceive(buf, count);
 		free(buf);
 	} else if (count == -2)
